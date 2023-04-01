@@ -1,0 +1,10 @@
+nCopies,10
+maxIterations,100
+nAnts,20
+alphas,1
+betas,2
+Qs,1
+rhos,0,1,101
+sigmas,1
+map_file,normal_random250.txt
+output_file,normal_random250-rho-many.csv

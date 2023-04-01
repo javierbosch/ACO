@@ -1,0 +1,10 @@
+nCopies,1
+maxIterations,50
+nAnts,20
+alphas,0,10,101
+betas,0,10,101
+Qs,1
+rhos,1
+sigmas,1
+map_file,normal_random50.txt
+output_file,normal_random50_alpha_beta.csv

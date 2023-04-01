@@ -1,0 +1,10 @@
+nCopies,1
+maxIterations,10000
+nAnts,20
+alphas,1
+betas,2
+Qs,1
+rhos,0.8
+sigmas,1
+map_file,bins_normal_WS:_Food_Waste_Communal_City_Centre_euclidean_71.csv
+output_file,result_bins_normal_WS:_Food_Waste_Communal_City_Centre_euclidean_71.csv
