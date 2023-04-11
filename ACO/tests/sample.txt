@@ -1,10 +1,10 @@
-nCopies,1
-maxIterations,100
+nCopies,100
+maxIterations,10000
 nAnts,20
-alphas,1
+alphas,2
 betas,2
 Qs,1
 rhos,0.8
-sigmas,1
+sigmas,20
 map_file,normal_att48.txt
 output_file,sample.csv

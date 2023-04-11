@@ -15,7 +15,7 @@ west = -3.3374
 G = None
 
 def create_graph():
-    return ox.graph_from_bbox(north, south, east, west, network_type='drive_service', simplify=True)
+    return ox.load_graphml("data/edinburgh_graph.graphml")
 
 def heu(node, goal):
     return ox.distance.euclidean_dist_vec(G.nodes[node]['x'], G.nodes[node]['y'], G.nodes[goal]['x'], G.nodes[goal]['y'])
@@ -93,6 +93,7 @@ def main():
 
     global G
     G = create_graph()
+    print(G)
     bins = pd.read_csv('data/Bins_cleaned.csv')
 
     if args.bin_type:
@@ -118,7 +119,7 @@ def main():
     
     size = len(node_ids)
 
-    save_file_prefix =  "../ACO/maps/bins_normal" + ("_" + args.bin_type if args.bin_type else "") + ("_" + args.ward if args.ward else "")
+    save_file_prefix =  "../ACO/maps/bins_normal_2_" + ("_" + args.bin_type if args.bin_type else "") + ("_" + args.ward if args.ward else "")
     save_file_prefix = save_file_prefix.replace(" ", "_")
 
     save_file_euclidean = save_file_prefix + "_euclidean_" + str(size) +  ".csv"
@@ -128,7 +129,7 @@ def main():
     np.savetxt(save_file_nonplanar, adjacency_matrix_nonplanar, fmt='%1.8f', delimiter=",")
     
     #save node ids
-    node_ids_file = (save_file_prefix[5:]) + "_node_ids_" + str(size) +  ".csv"
+    node_ids_file = (save_file_prefix[12:]) + "_node_ids_" + str(size) +  ".csv"
     np.savetxt(node_ids_file, node_ids, fmt='%d', delimiter=",")
     
 

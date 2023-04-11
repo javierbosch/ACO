@@ -1,8 +1,16 @@
-# DISSERTATION TITLE
+# Analysis of Ant Colony Optimization Parameter Space
+
+Hello, this is the repository for my dissertation. This repository contains all the code used to run the experiments and generate the results. If you are interested in the dissertation itself, you can read it on `dissertation.pdf`. Here you might find some useful information about the code.
 
 ## Abstract
 
-Hello, this is the repository for my dissertation. This repository contains all the code used to run the experiments and generate the results. If you are interested in the dissertation itself, you can read it on `dissertation.pdf`. Here you might find some useful information about the code.
+This dissertation investigates the performance of the Ant Colony Optimization (ACO) algorithm in solving the Travelling Salesperson Problem (TSP), with a focus on the exploration of the parameter space. A simple, open-source Java implementation of the ACO algorithm is developed and used throughout the project. The impact of key parameters, such as the evaporation rate ($\rho$) and others, on the algorithm's efficiency and effectiveness, is examined in-depth.
+
+The results reveal a functional dependence between the evaporation rate and the number of iterations, which can be used to optimize the ACO algorithm's performance. The potential of a dynamic evaporation rate is also explored, showing promising results. The applicability of the ACO algorithm to real-world optimization problems is discussed, with urban waste management as an illustrative example. This research contributes valuable insights for the development and improvement of ACO in solving complex optimization problems.
+
+
+![ACO on the 48-city map](/plots/images/paths.gif "ACO on the 48-city map")
+
 
 
 ## Creating TSP maps from real bins in Edinburgh

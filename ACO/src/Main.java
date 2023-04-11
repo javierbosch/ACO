@@ -30,7 +30,7 @@ class Main
         double[][] costMatrix = ReadProblem(map_file);
 
         int total = nAnts.length * alphas.length * betas.length * sigmas.length * rhos.length * Qs.length * nCopies;
-        MultiACO[] colonies = new MultiACO[total];
+        ACO[] colonies = new ACO[total];
 
         for (int n = 0; n < nAnts.length; n++)
         {
@@ -58,7 +58,7 @@ class Main
                                             r * nAnts.length * alphas.length * betas.length * sigmas.length +
                                             q * nAnts.length * alphas.length * betas.length * sigmas.length * rhos.length +
                                             j * nAnts.length * alphas.length * betas.length * sigmas.length * rhos.length * Qs.length;
-                                    colonies[index] = new MultiACO(costMatrix, alpha, beta, rho, Q, sigma, numAnts, maxIterations, output_file,total);
+                                    colonies[index] = new ACO(index, costMatrix, alpha, beta, rho, Q, sigma, numAnts, maxIterations, output_file,total);
                                 }
                             }
                         }
@@ -66,7 +66,7 @@ class Main
                 }
             }
         }
-        for (MultiACO colony : colonies) {
+        for (ACO colony : colonies) {
             Thread thread = new Thread(colony);
             thread.start();
         }
@@ -74,15 +74,17 @@ class Main
 
     static void WriteHeaders(){
         String headers =
-                "iteration," +
-                        "alpha," +
-                        "beta," +
-                        "sigma," +
-                        "rho," +
-                        "Q," +
-                        "bestLength," +
-                        "bestCurrent," +
-                        "bestPath\n";
+            "id," +
+            "iteration," +
+            "alpha," +
+            "beta," +
+            "sigma," +
+            "rho," +
+            "Q," +
+            "nAnts,"+
+            "bestLength," +
+            "bestCurrent," +
+            "bestPath\n";
         try {
             FileWriter writer = new FileWriter(output_file,false);
             writer.write(headers);
@@ -103,6 +105,9 @@ class Main
                 double[] values;
                 if(split.length > 3){
                     values = Steps(Double.parseDouble(split[1]), Double.parseDouble(split[2]), Integer.parseInt(split[3]));
+                }
+                else if(split.length == 3){
+                    values = new double[]{Double.parseDouble(split[1]), Double.parseDouble(split[2])};
                 }else{
                     try {
                         values = new double[]{Double.parseDouble(split[1])};
